@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+}
+.formulario{
+    text-align: center;
+}
+.nav-item{
+    color: solid black;
+    text-decoration: none;
+}
+#formulario{
+    background-color: lightgrey;
+    padding: 15px;
+}
+#jumbo{
+    text-align: center;
+}

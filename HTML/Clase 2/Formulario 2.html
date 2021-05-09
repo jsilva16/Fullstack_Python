@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Ninja</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Formulario de registro</h1>
+    <table border="1" bgcolor="lightgrey" style="margin-left: auto; margin-right: auto; ">
+        <tbody>
+            <tr>
+                <td><label for="nombre">Nombre:</label></td>
+                <td><input type="text" id="nombre"></td>
+            </tr>
+            <tr>
+                <td><label for="apellido">Apellido:</label></td>
+                <td><input type="text" id="apellido"></td>
+            </tr>
+            <tr>
+                <td><label for="mail">E-Mail:</label></td>
+                <td><input type="text" id="mail"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Contraseña:</label></td>
+                <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Confirmar:</label></td>
+                <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td><label for="birth">Fecha de nacimiento:</label></td>
+                <td><input type="date" id="birth" name="birth"></td>
+            </tr>
+            <tr>
+                <td><label for="genero">Género:</label></td>
+                <td style="background-color: white;">
+                    <label for="masculino">Masculino</label>
+                    <input type="radio" id="masculino" name="genero" value="masculino">
+                    <br><br>
+                    <label for="femenino">Femenino</label>
+                    <input type="radio" id="femenino" name="genero" value="femenino">
+                    <br><br>
+                    <label for="prefiero-no-decir">Prefiero no decir</label>
+                    <input type="radio" id="prefiero-no-decir" name="genero" value="prefiero-no-decir">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="description">Acerca de ti:</label></td>
+                <td><textarea name="description" rows="10" cols="16"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="lenguajes">Lenguaje favorito:</label></td>
+                <td>
+                    <select id="lenguajes" name="lenguajes">
+                        <option value="py">Python</option>
+                        <option value="js">Javascript</option>
+                        <option value="java">Java</option>
+                        <option value="PHP">PHP</option>
+                    </select>
+                </td>
+            </tr>
+                        
+        </tbody>
+    </table>
+    <br>
+    
+    <div style="text-align: center;"><input type="submit" value="Enviar"></div>
+    
+</body>
+</html>

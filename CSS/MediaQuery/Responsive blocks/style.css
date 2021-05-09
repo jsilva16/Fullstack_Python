@@ -1,0 +1,63 @@
+.green{
+    background-color: green;
+    min-height: 100px;
+    margin: 20px;
+}
+.blue{
+    background-color: blue;
+    width: 20%;
+    min-height: 400px;
+    display: inline-block;
+    margin: 0px 20px;
+}
+.red{
+    background-color: red;
+    width: 75.5%;
+    display: inline-block;
+    vertical-align: top;
+
+}
+.yellow{
+    background-color: yellow;
+    display: inline-block;
+    min-height: 200px;
+    min-width: 300px;
+    width: 29.2%;
+    margin: 20px;
+}
+.purple{
+    background-color: purple;
+    min-height: 150px;
+    display: block;
+    margin: 20px;
+}
+
+@media screen and (min-width: 481px) and (max-width: 1023px) {
+    .blue{
+        display: none;
+    }
+    .red{
+        text-align: left;
+        width: auto;
+        margin: 20px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .blue{
+        display: none;
+    }
+    .yellow{
+        display: inline-block;
+        text-align: center;
+    }
+    .red{
+        text-align: center;
+        width: 90%;
+        margin: 20px;
+    }
+    .purple{
+        width: 300px;
+        display: inline-block;
+    }
+    
+}
