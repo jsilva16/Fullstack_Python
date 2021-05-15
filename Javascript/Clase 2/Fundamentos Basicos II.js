@@ -160,10 +160,10 @@ function hungry(arr){
         i++;
     }
     if(arr_new.length==0){
-        console.log('tengo hambre')
+        console.log('tengo hambre');
         }
 }
-b=hungry([1,'comida',-4,1,'comida',8,-9,5]);
+b=hungry([1,-4,1,8,-9,5]);
 
 /*Cambiar hacia el centro*/
 function mid_swap(arr){
