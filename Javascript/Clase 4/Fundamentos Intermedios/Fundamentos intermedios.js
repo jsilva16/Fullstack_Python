@@ -56,7 +56,7 @@ function fibo(x){
     
     return fib;
 }
-b=fibo(0)
+b=fibo(5)
 console.log(b);
 
 /*Array: Penúltimo*/
@@ -112,12 +112,6 @@ function second_max(arr){
 b=second_max([42,1,4,3.14,7,20]);
 console.log(b);
 
-/*  */ 
-
-
-
-
-
 
 /*fib recursion*/
 function fib(x){
@@ -128,5 +122,5 @@ function fib(x){
         return fib(x-2)+fib(x-1);
     }
 }
-b=fib(10);
+b=fib(5);
 console.log(b);

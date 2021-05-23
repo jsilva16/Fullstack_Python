@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sumando 2 números</h1>
+    <br>
+    <hr>
+    Primer número: <input id="n1"><br><br>
+    Segundo número: <input id="n2"><br><br>
+    <button type="button" onclick="sumar()">Sumar</button>
+    <br>
+    <p id="respuesta"></p>
+
+    <script>
+        function sumar(){
+            //Definiendo las variables para guardar los números
+            var num1=0, num2=0, suma=0;
+            // Capturando los valores ingresados
+            num1 = document.getElementById("n1").value;
+            num2 = document.getElementById("n2").value;
+            //Sumando los valores
+            suma = parseFloat(num1) + parseFloat(num2);
+            // Incando el lugar para imprimir la respuesta a la suma
+            document.getElementById("respuesta").innerHTML=suma;
+        }
+    </script>
+</body>

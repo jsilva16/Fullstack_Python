@@ -88,20 +88,25 @@
 
 		function fill(x,y,original_color, color)
 		{
-            if (world[y-1][x]!=world[y][x]&&world[y][x-1]!=world[y][x]&&world[y+1][x]!=world[y][x]&&world[y][x+1]!=world[y][x]){
+            
+            if(y<0 || y>=world.length || x<0 || x>=10){
                 return false;
             }
-            else if(y<0 || y>world.length || x<0 || x>10){
+			if (world[y][x]!= original_color){
                 return false;
             }
 			//your recursion codes here
-            else{
 
-            }
 			world[y][x] = color;
 
 			// your recursion codes here
 
+			fill(x,y-1,original_color, color);
+			fill(x,y+1,original_color, color);
+			fill(x-1,y,original_color, color);
+			fill(x+1,y,original_color, color);
+			
+			
 			drawWorld();
 			
 		}

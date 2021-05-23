@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+    
+    <title>Promedio</title>
+
+    <!-- Construir un formulario que solicite el ingreso de 4 notas y un examen-->
+    <!-- Validar los rangos de las notas ingresadas (10 - 70) -->
+    <!-- Calcular el promedio del las primeras 4 notas -->
+    <!-- Calcular la nota de presentación a examen NP=0.7*PromedioNotas-->
+    <!-- Calcular la nota final obtenida NF=0.7*PromedioNotas + NE*0.3-->
+    <!-- Si el alumno obtiene al menos una nota roja, entonces automaticamente reprueba el curso-->
+    <!-- Por lo tanto el alumno aprueba con promedio final>=40 con todas sus notas parciales
+         Sobre 40 -->
+    <!-- Imprimir los resultados en pantalla (promedios, NF) y el estado del 
+         alumno ("Aprobado y reprobado")-->
+    <!-- Agregar CSS y/o Bootstrap-->
+    <script>
+        var nota1=0;
+        var nota2=0;
+        var nota3=0;
+        var nota4=0;
+        var examen=0;
+        var avg= 0;
+        var nota_final=0;
+        var nota_presentacion=0;
+        
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="">
+            <div class="main_container ">
+                <div>
+                    <h1 class="text-center">Promedio de Notas y estado de aprobación</h1>
+                    <br>
+                    <div id="form" class="offset-col-sm-3">
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Nota 1</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="nota1" class="form-control" placeholder="Ingrese su primera nota">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Nota 2</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="nota2" class="form-control" placeholder="Ingrese su segunda nota">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Nota 3</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="nota3" class="form-control" placeholder="Ingrese su tercera nota">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Nota 4</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="nota4" class="form-control" placeholder="Ingrese su cuarta nota">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Examen</label>
+                            <div class="col-sm-3">
+                                <input type="text" id="examen" class="form-control" placeholder="Ingrese la nota de su examen">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-sm-10 ofset-col-sm-3">
+                            <button type="submit" onclick='btnMinformacion()' class="btn btn-secondary">Calcular</button>
+                            <script>
+                                var divMas=document.getElementById("mas");
+                                function btnMinformacion(){
+                                var mTable=`<table class='table-secondary'>
+                                    <thead class='bg-secondary'>
+                                        <tr>
+                                            <th >Promedio</th>
+                                            <th >Promedio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>The table body</td>
+                                            <td>with two columns</td>
+                                        </tr>
+                                    </tbody>
+                                </table>`;
+                                divmas.innerHTML=mTable;
+
+                                }
+                            </script>
+                        </div>
+                        <br>
+                        <div id="divmas">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
