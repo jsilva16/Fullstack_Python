@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traversing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+/*
+            $('#parenting').children('h3').css('background-color','lightgray');
+
+            $('h3, h5').click(function(){
+                $(this).parent().append('<h2>Falta poco para la segunda prueba!!</h2>')
+            })
+*/
+            $('h3, h5').click(function(){
+                $(this).siblings().hide();
+            });
+            $('button').click(function(){
+                $(this).siblings().children().children().text('David Mix');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="parenting" class="col-sm-4 offset-sm-3 text-center">
+        <h5>Lista del curso</h5>
+        <h3>Jose Ulloa</h3>
+        <h3>Alex Urtubia</h3>
+        <h3>Alvaro Castillo</h3>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-primary col col-sm-2">agregar alumno</button>
+        <ul >
+            <li><h3>Andrea Fernandez</h3></li>
+            <li><h3>Ariel Gonzalez</h3></li>
+            <li><h3>Constanza Vega</h3></li>
+        </ul>
+    </div>
+</body>
+</html>
