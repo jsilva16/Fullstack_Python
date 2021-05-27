@@ -1,0 +1,5 @@
+vim         abre editor vim
+explorer    abre el explorador de windows 
+test        evalua una expresión condicional
+ulimit      modifica el limite de recursos de powershell
+exec  	    reemplaza el shell con el comando dado como argumento
