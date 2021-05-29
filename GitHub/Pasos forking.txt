@@ -1,0 +1,7 @@
+1. entrar al repositorio original
+2. hacer forking del repositorio original 
+3. clonar el repositorio copiado desde el original con 'git clone https://github.com/jsilva16/git_demo'
+4. modificar archivos.
+5. actualizar repositorio con los cambios realizados con 'git push origin master'
+6. una vez actualizado el repositorio se realiza el pull request desde la pagina de github.
+
