@@ -11,14 +11,50 @@
     <script>
         $(document).ready(function(){
             for (var i=1;i<152;i++){
-                $('#pokediv').append("<img src='http:/raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+i+".png'  class='img-fluid rounded border m-2 border-4'>");
+                $('#pokediv').append(`<img id="${i}" src="http:/raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${i}.png"  class="img-fluid rounded border m-2 border-4">`);
             }
-        })
+            $('img').on('click', function() {  
+                $('.aside').empty();
+                $('.pokeid').css({
+                    position:"absolute",
+                    top:event.pageY,
+                    left:event.pageX});
+                var id = $(this).attr('id');
+                $.get(`https://pokeapi.co/api/v2/pokemon/${id}`, function(value){
+                    $('.aside').append(`<tr><td><h2>${value.name}</h2></td></tr>`);
+                    $('.aside').append(`<tr><td><img id="${id}" src="http:/raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"  class="img-fluid rounded border m-2 border-4"></td></tr>`);
+                    $('.aside').append('<tr><td>Tipo de Pokemon</p></td></tr>');
+                    for(var i=0; i<value.types.length; i++){
+                        $('.aside').append(`<tr><td><ul><li>${value.types[i].type.name}</li></ul></td></tr>`);
+                    }
+                    $('.aside').append(`<tr><td><p>Altura (In): </p><ul><li>${value.height}</li></ul></td></tr>`);
+                    $('.aside').append(`<tr><td><p>Peso (lb): </p><ul><li>${value.weight}</li></ul></td></tr>`);
+                });   
+            });
+            
+        }); //cierre funcion document ready
     </script>
+    <style>
+        .pokeid{
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="text-center m-3">Shinydex Gen 1</h1>
-    <div class="container d-inline-block poke col col-sm 8 offset-sm-1" id="pokediv">
+    <div>
+        <h1 class="text-center m-3">Shinydex Gen 1</h1>
+        <div id="pokediv" class="offset-sm-1"></div>
+        <div class="col col-sm-2 bg-light text-center pokeid rounded">
+            <table class="table text-center border  border-warning border-5">
+                <tbody class="aside">
+
+                </tbody>
+            </table>
+        </div>
+            
+        
     </div>
+    
+    
 </body>
 </html>

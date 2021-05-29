@@ -1,0 +1,78 @@
+
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="pokescript.js"></script>
+
+</head>
+<body>
+    <h2>Lista de Pokemones</h2>
+    <div id="pokemon">
+
+    </div>
+</body>
+</html>
+
+
+// pokescript.js
+$(document).ready(function(){
+    for(var a=1; a<=151; a++){
+        $('#pokemon').append('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+a+'.png">');
+    }
+})
+
+
+
+*************************************************+
+//Actividad pokedex
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="pokescript.js"></script>
+
+</head>
+<body>
+    <h2>Lista de Pokemones</h2>
+    <div id="pokemon">
+        <section></section>
+        <aside></aside>
+    </div>
+</body>
+</html>
+
+
+
+$(document).ready(function(){
+    for(var a=1; a<=151; a++){
+        $('#pokemon').append(`<img id="${a}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${a}.png">`);
+    }
+
+    $('img').on('click',function(){
+        $('aside').empty();
+        var id = $(this).attr('id');
+        $.get(`https://pokeapi.co/api/v2/pokemon/${id}`,function(value){
+            $('aside').append(`<h1>${value.name}</h1>`);
+            $('aside').append(`<img id="${id}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">`);
+            $('aside').append(`<p>Tipos de Pokemon</p>`)
+            for(var i=0; i<value.types.length; i++){
+                $('aside').append(`<ul><li>${value.types[i].type.name}</li></ul>`);
+            }
+            $('aside').append(`<p>Altura: </p><ul><li>${value.height}</li></ul>`);
+            $('aside').append(`<p>Peso: </p><ul><li>${value.weight}</li></ul>`);
+        })
+    })
+})
+
