@@ -1,0 +1,16 @@
+C:\Users\Skeltah>cd desktop
+C:\Users\Skeltah\Desktop>mkdir test
+C:\Users\Skeltah\Desktop>cd test
+C:\Users\Skeltah\Desktop\test>type nul>index.html
+C:\Users\Skeltah\Desktop\test>type nul>style.css
+C:\Users\Skeltah\Desktop\test>git init
+C:\Users\Skeltah\Desktop\test>git add -A
+C:\Users\Skeltah\Desktop\test>git commit -m "inicio"
+C:\Users\Skeltah\Desktop\test>git add -A
+C:\Users\Skeltah\Desktop\test>git commit -m "actualización de html"
+C:\Users\Skeltah\Desktop\test>git add -A
+C:\Users\Skeltah\Desktop\test>git commit -m "actualización de css"
+C:\Users\Skeltah\Desktop\test>git log
+C:\Users\Skeltah\Desktop\test>git revert -n HEAD
+C:\Users\Skeltah\Desktop\test>git add -A
+C:\Users\Skeltah\Desktop\test>git commit -m "cambios finales"

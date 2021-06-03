@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Api Clima</title>
+</head>
+<body>
+    <div class="container">
+        <div class="">
+            <h1 class="text-center mt-4">API Weather</h1>
+                <br>
+                <div id="form" class="offset-col-sm-3 offset-sm-3">
+                    <div class="form-group row">
+                        <label class="col-sm-1 col-form-label">Ingrese ciudad</label>
+                        <div class="col-sm-3 mt-3">
+                            <input type="text" id="city" class="form-control" placeholder="Ingrese la ciudad">
+                            
+                        </div>
+                        <button type="submit" onclick="weather()" class="btn btn-primary col col-sm-2 m-3">Submit Query</button>
+                        <script>
+                            var divMas=document.getElementById("mas");
+                            function btnMinformacion(){
+                            var mTable=`<table class='table-secondary'>
+                                <thead class='bg-secondary'>
+                                    <tr>
+                                        <th >Promedio</th>
+                                        <th >Promedio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>The table body</td>
+                                        <td>with two columns</td>
+                                    </tr>
+                                </tbody>
+                            </table>`;
+                            divmas.innerHTML=mTable;
+
+                            }
+                        </script>
+                    </div>
+                    <br>
+                    <div id="divmas">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
