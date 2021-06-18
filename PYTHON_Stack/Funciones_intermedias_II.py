@@ -57,12 +57,15 @@ iterateDictionary(students)
 # diccionario. Por ejemplo, iterateDictionary2 ('first_name', students) debería generar:
 
 students = [
-        {'first_name':  'Michael', 'last_name' : 'Jordan'},
-        {'first_name' : 'John', 'last_name' : 'Rosales'},
-        {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-        {'first_name' : 'KB', 'last_name' : 'Tonel'}
+        {'first_name1':  'Michael', 'last_name' : 'Jordan'},
+        {'first_name2' : 'John', 'last_name' : 'Rosales'},
+        {'first_name3' : 'Mark', 'last_name' : 'Guillen'},
+        {'first_name4' : 'KB', 'last_name' : 'Tonel'}
     ]
-def iterateDictionary2(key, arr):
+def iterateDictionary2(llave, arr):
     for i in range (len(arr)):
-        print([value for value in arr[i].values()][0] + ", "
-        +[key for key in arr[i].keys()][1]+" - "+[value for value in arr[i].values()][1])
+        for j in range(len(arr[i])):
+            if [key for key in arr[i].keys()][j]== llave:
+                print([value for value in arr[i].values()][j])
+
+iterateDictionary2('last_name', students)
