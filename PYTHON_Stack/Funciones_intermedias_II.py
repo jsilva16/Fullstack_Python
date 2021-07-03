@@ -69,3 +69,24 @@ def iterateDictionary2(llave, arr):
                 print([value for value in arr[i].values()][j])
 
 iterateDictionary2('last_name', students)
+
+
+#////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#Itera a través de un diccionario con valores de listas
+#
+#Crea una función printInfo(some_dict)que, dado un diccionario cuyos valores son todas listas, imprima el nombre de cada clave 
+#junto con el tamaño de su lista, y luego imprima los valores asociados dentro de la lista de cada clave. 
+
+dojo = {
+    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+}
+
+def printInfo(arr):
+    for i in arr:
+        print(len(arr[i]), i)
+        for j in range(len(arr[i])):
+            print(arr[i][j])
+
+printInfo(dojo)
