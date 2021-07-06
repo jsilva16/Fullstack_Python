@@ -16,6 +16,8 @@ class Trabajador(Persona):
     def __init__(self):
         super().__init__()
         self.sueldo = int(input("Ingrese el sueldo: "))
+        print(self.nombre)
+        print(super.nombre)
 
     def mostrarDatos(self):
         super().mostrarDatos()
