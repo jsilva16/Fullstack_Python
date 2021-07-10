@@ -130,17 +130,53 @@ select * from countries;
 
 select country_code, percentage from languages where language="Slovene";
 
-select a.name, b.language, b.percentage from countries a, languages b where a.code= b.country_code and b.language="Slovene" order by b.percentage desc;
+-- CONSULTA 1
 
-select * from cities;
-select a.name, count(*) as cities 
-from countries a, cities b 
-where a.code= b.country_code;
+select a.name, b.language, b.percentage 
+from countries a, languages b 
+where a.code= b.country_code and b.language="Slovene" 
+order by b.percentage desc;
 
-group by country_code;
-
+-- CONSULTA 2
 select a.name, count(b.id) as ciudades
 from countries a, cities b 
 where a.code= b.country_code
 group by b.country_id
 order by ciudades desc;
+
+-- CONSULTA 3
+select a.name, b.name as ciudades, b.population
+from countries a, cities b 
+where a.code= b.country_code and a.code="MEX" and b.population>500000
+order by population desc;
+
+-- CONSULTA 4
+
+select b.name, a.language, a.percentage
+from countries b
+left join languages a on b.id=a.country_id
+where a.percentage>89
+order by a.percentage desc;
+
+-- CONSULTA 5
+SELECT 	name as Pais, population as Poblacion, surface_area as Superficie
+from countries
+where population>100000 and surface_area<501;
+
+-- CONSULTA 6
+select name as Pais, life_expectancy as Esperanza_de_vida, capital, government_form as tipo_de_gobierno
+from countries
+where life_expectancy>75 and government_form="Constitutional Monarchy" and capital>200;
+
+-- CONSULTA 7 
+SELECT a.name as Pais, b.name as Ciudad, b.district, b.population FROM countries a
+LEFT JOIN cities b ON a.id=b.country_id
+WHERE a.code="ARG" AND b.district= "Buenos Aires" AND b.population>500000
+ORDER BY b.population DESC;
+
+-- CONSULTA 8
+SELECT region, count(code) as nro_paises
+FROM countries
+GROUP BY region
+ORDER BY nro_paises DESC;
+ 
