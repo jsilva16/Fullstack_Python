@@ -17,7 +17,7 @@ class Animal:
     
     def play(self):
         self.health -= 50
-        self.happyness +=100
+        self.happyness += 100
 
 
 class Hyenna(Animal):
@@ -29,7 +29,7 @@ class Hyenna(Animal):
         super().feed()
         self.health -= 50
         self.happyness += 40
-        self.bloodthirst -=200
+        self.bloodthirst -= 200
     
     def display_info(self):
         super().display_info()
@@ -43,7 +43,7 @@ class Papagayo(Animal):
     def feed(self):
         super().feed()
         self.happyness += 90
-        self.will_to_talk +=200
+        self.will_to_talk += 200
     
     def display_info(self):
         super().display_info()
@@ -57,7 +57,27 @@ class Lion(Animal):
 
     def feed(self):
         super().feed()
+        self.health -= 80
+        self.lazyness += 50
+    
+    def play(self):
+        super().play()
+        self.lazyness += 100
+
+    def display_info(self):
+        super().display_info()
+        print(f"La flojera del león es de {self.lazyness}")
         
+class Tiger(Animal):
+    def __init__(self):
+        super().__init__()
+        self.eager_to_hunt = 500
+
+    def feed(self):
+        super().feed()
+        self.eager_to_hunt -= 50
+    
+    def hunt(self):
 
 
 

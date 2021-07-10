@@ -1,0 +1,18 @@
+CREATE TABLE Persona (
+rut varchar(10) NOT NULL PRIMARY KEY,
+nombre varchar(50) NOT NULL,
+apellido varchar(50) NOT NULL,
+edad INT NOT NULL
+);
+
+-- insertando datos
+INSERT INTO Persona value ('17941195-4', 'Pedro', 'Picapiedra', 35);
+INSERT INTO Persona value ('27941195-4', 'Wilma', 'Picapiedra', 35);
+INSERT INTO Persona value ('37941195-4', 'Pablo', 'Marmol', 35);
+INSERT INTO Persona value ('47941195-4', 'Betty', 'Marmol', 35);
+
+SELECT * FROM Persona;
+SELECT rut, nombre FROM Persona;
+
+update Persona set rut='123-4';
+delete from Persona where edad>35;
