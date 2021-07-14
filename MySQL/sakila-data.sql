@@ -19,7 +19,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-create schema sakila;
+-- create schema sakila;
 use sakila;
 
 
@@ -48245,3 +48245,67 @@ DELIMITER ;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+select * from Inventory;
+
+-- CONSULTA 1
+
+SELECT a.first_name AS Nombre, a.last_name AS Apellido, a.email AS E_mail, b.address FROM customer a
+JOIN address b ON a.address_id=b.address_id
+WHERE b.city_id=312;
+
+-- CONSULTA 2
+SELECT * FROM film;
+
+SELECT a.title AS Titulo, a.description as Descripcion, a.release_year as Estreno, a.rating as Clasificacion, a.special_features as Caracteristicas_especiales, c.name as Categoria
+FROM film a
+JOIN film_category b ON a.film_id= b.film_id
+JOIN category c ON c.category_id=b.category_id
+WHERE c.name="Comedy";
+
+-- CONSULTA 3
+SELECT c.actor_id AS ID, CONCAT(c.first_name, ' ', c.last_name) AS Nombre_del_actor, a.film_id AS Film_ID, a.title AS Titulo, a.description AS Descripcion, a.release_year AS Fecha_de_estreno
+FROM film a
+JOIN film_actor b ON a.film_id= b.film_id
+JOIN actor c ON c.actor_id= b.actor_id
+WHERE c.actor_id=5;
+
+select * from film;
+
+-- CONSULTA 4
+SELECT a.first_name AS Nombre, a.last_name AS Apellido, a.email AS E_mail, b.address, a.store_id, b.city_id
+FROM customer a
+JOIN address b ON a.address_id=b.address_id
+WHERE a.store_id=1 AND b.city_id IN (1, 42, 312, 459);
+
+-- CONSULTA 5
+SELECT a.film_id, a.title AS Titulo, a.description as Descripcion, a.release_year as Estreno, a.rating as Clasificacion, a.special_features as Caracteristicas_especiales
+FROM film a
+JOIN film_actor b ON a.film_id= b.film_id
+JOIN actor c ON c.actor_id= b.actor_id
+WHERE a.rating="G" AND c.actor_id=15 AND a.special_features LIKE "%Behind the Scenes" 
+GROUP BY a.film_id;
+
+-- CONSULTA 6
+SELECT a.film_id AS Film_ID, a.title AS Titulo, c.actor_id AS Actor_ID, CONCAT(c.first_name, ' ', c.last_name) AS Nombre_del_actor
+FROM film a
+JOIN film_actor b ON a.film_id= b.film_id
+JOIN actor c ON c.actor_id= b.actor_id
+WHERE a.film_id=369;
+
+-- CONSULTA 7
+SELECT a.title AS Titulo, a.description as Descripcion, a.release_year as Estreno, a.rating as Clasificacion, a.special_features as Caracteristicas_especiales, c.name as Categoria
+FROM film a
+JOIN film_category b ON a.film_id= b.film_id
+JOIN category c ON c.category_id=b.category_id
+WHERE c.name="Drama" AND a.rental_rate=2.99;
+
+-- CONSULTA 8
+SELECT e.first_name AS Nombre_actor, e.last_name AS Apellido_actor, a.title AS Titulo, a.description as Descripcion, a.release_year as Estreno, a.rating as Clasificacion, a.special_features as Caracteristicas_especiales, c.name as Categoria
+FROM film a
+JOIN film_category b ON a.film_id= b.film_id
+JOIN category c ON c.category_id=b.category_id
+JOIN film_actor d ON a.film_id= d.film_id
+JOIN actor e ON e.actor_id= d.actor_id
+WHERE e.first_name="SANDRA" AND e.last_name="KILMER" AND c.name="ACTION";
+

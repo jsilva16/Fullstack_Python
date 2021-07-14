@@ -32,6 +32,7 @@ class Hyenna(Animal):
         self.bloodthirst -= 200
     
     def display_info(self):
+        print("El animal es una Hyenna")
         super().display_info()
         print(f"La sed de sangre del animal es de {self.bloodthirst}")
 
@@ -46,6 +47,7 @@ class Papagayo(Animal):
         self.will_to_talk += 200
     
     def display_info(self):
+        print("El animal es un Papagayo")
         super().display_info()
         print(f"Las ganas de hablar del Papagayo son de {self.will_to_talk}")
     
@@ -65,6 +67,7 @@ class Lion(Animal):
         self.lazyness += 100
 
     def display_info(self):
+        print("El animal es un León")
         super().display_info()
         print(f"La flojera del león es de {self.lazyness}")
         
@@ -83,36 +86,19 @@ class Tiger(Animal):
         self.happyness += 200
 
     def display_info(self):
+        print("El animal es un Tigre")
         super().display_info()
         print(f"Las ansias de cazar del tigre son de {self.eager_to_hunt}")
 
 
-class Zoo(Hyenna):
+class Zoo(Hyenna, Papagayo, Lion, Tiger):
     def __init__(self, zoo_name):
         self.animals = []
         self.name = zoo_name
         self.animal_count = 0
     
-    def add_Hyenna(self, name):
-        self.animals.append( Hyenna(name) )
-        exec(f"self.{name}_index = self.animal_count")
-        self.animal_count += 1
-        return self
-
-    def add_Papagayo(self, name):
-        self.animals.append( Papagayo(name) )
-        exec(f"self.{name}_index = self.animal_count")
-        self.animal_count += 1
-        return self
-
-    def add_lion(self, name):
-        self.animals.append( Lion(name) )
-        exec(f"self.{name}_index = self.animal_count")
-        self.animal_count += 1
-        return self
-
-    def add_tiger(self, name):
-        self.animals.append( Tiger(name) )
+    def add_animal(self, animal_name, name):
+        exec("self.animals.append("+f"{animal_name}('{name}'))")
         exec(f"self.{name}_index = self.animal_count")
         self.animal_count += 1
         return self
@@ -147,27 +133,28 @@ class Zoo(Hyenna):
             self.add_animals()
         elif choice==6:
             return None
-        a_name = input("Ingreseel nombre del animal: ")
+        a_name = input("Ingrese el nombre del animal: ")
         if choice == 1:
-            self.add_Hyenna(a_name)
+            exec("self.add_animal('Hyenna', '"+f"{a_name}')")
             self.add_animals()
         elif choice==2:
-            self.add_Papagayo(a_name)
+            exec("self.add_animal('Papagayo', '"+f"{a_name}')")
             self.add_animals()
         elif choice==3:
-            self.add_lion(a_name)
+            exec("self.add_animal('Lion', '"+f"{a_name}')")
             self.add_animals()
         elif choice==4:
-            self.add_tiger(a_name)
+            exec("self.add_animal('Tiger', '"+f"{a_name}')")
             self.add_animals()
-        
-            
-        
+
 
 
 zoo1 = Zoo("John's Zoo")
 zoo1.add_animals()
-zoo1.add_Hyenna("kala") .add_lion("koala") .add_tiger("khan") .add_Papagayo("pepe") .print_all_info()
+zoo1.add_animal("Hyenna", "kala")
+zoo1.add_animal("Papagayo", "pepe")
+zoo1.add_animal("Lion", "koala")
+zoo1.add_animal("Tiger", "khan")
 zoo1.feed("khan") .feed("kala") .feed("pepe") .play("koala") .hunt("khan") .print_all_info()
 
 
