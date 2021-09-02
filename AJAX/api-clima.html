@@ -5,16 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--import jSON con lista de ciudades para autocompletar
-        <script type="text/javascript" src="JSON/citylist.json"></script>
-    --> 
-
+        <script type="text/javascript" src="JSON/citylist.json"></script> --> 
     <title>Api Clima</title>
     <script>
-                
         $(document).ready(function () {
             $('form').submit(function() {
                 var city= document.getElementById("city").value;
@@ -30,9 +26,6 @@
             return false;
             });
         });
-
- //  <td>http://api.openweathermap.org/data/2.5/weather?q=london&&appid=48fa37b7148add94c4274ac6ebd15a0e</td>  URL completa
-
     </script>
 </head>
 <body>
