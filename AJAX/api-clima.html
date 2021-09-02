@@ -5,25 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <!--import jSON con lista de ciudades para autocompletar
+        <script type="text/javascript" src="JSON/citylist.json"></script>
+    --> 
+
     <title>Api Clima</title>
     <script>
-        var divMas=document.getElementById("mas");
-        function weather(){
-        var mTable=`<table class='table-secondary'>
-            <tbody>
-                <tr>
-                    <td>http://api.openweathermap.org/data/2.5/weather?q=london&&appid=48fa37b7148add94c4274ac6ebd15a0e</td>
-                    <td>with two columns</td>
-                    <td>adsdasdsa </td>
-                    <td>asdsadsa </td>
-                </tr>
-            </tbody>
-        </table>`;
-        divmas.innerHTML=mTable;
+                
+        $(document).ready(function () {
+            $('form').submit(function() {
+                var city= document.getElementById("city").value;
+                console.log(city);
+                var url= `http://api.openweathermap.org/data/2.5/weather?q=${city}&&appid=48fa37b7148add94c4274ac6ebd15a0e`;
+                console.log(url);
+                $.get(url, function(res) {
+                    $('#city_tab').append(`<td>${res.name}</td>`);
+                    $('#weather_tab').append(`<td>${res.weather[0].description}</td>`);
+                    $('#temp_tab').append(`<td>${res.main.temp}</td>`);
+                    $('#coord_tab').append(`<td>${res.coord.lat}, ${res.coord.lon}</td>`);
+                }, 'json');
+            return false;
+            });
+        });
 
-        }
+ //  <td>http://api.openweathermap.org/data/2.5/weather?q=london&&appid=48fa37b7148add94c4274ac6ebd15a0e</td>  URL completa
+
     </script>
 </head>
 <body>
@@ -31,16 +40,36 @@
         <div class="">
             <h1 class="text-center mt-4">API Weather</h1>
                 <br>
-                <div id="form" class="offset-col-sm-3 offset-sm-3">
+                <form id="form" class="offset-col-sm-3 offset-sm-4">
                     <div class="form-group row">
                         <label class="col-sm-1 col-form-label">Ingrese ciudad</label>
                         <div class="col-sm-3 mt-3">
-                            <input type="text" id="city" class="form-control" placeholder="Ingrese la ciudad">
+                            <input type="text" id="city" name="city" class="form-control" placeholder="Ingrese la ciudad">
                             
                         </div>
-                        <button type="submit" onclick="weather()" class="btn btn-primary col col-sm-2 m-3">Submit Query</button>
+                        <button type="submit" class="btn btn-primary col col-sm-2 m-3">Submit Query</button>
                         
                     </div>
+                </form>
+                <br>
+                <div class= "col col-sm-6 offset-sm-3 p-4">
+                    <table class="table table-striped ">
+                        <tbody class= "table-">
+                            <tr id="city_tab">
+                                <td>Ciudad:</td>
+                            </tr>
+                            <tr id="weather_tab">
+                                <td>Tiempo:</td>
+                            </tr>
+                            <tr id="temp_tab">
+                                <td>Temperatura:</td>
+                            </tr>
+                            <tr id="coord_tab"> 
+                                <td>Coordenadas:</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </div>
         </div>
     </div>
