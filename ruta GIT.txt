@@ -1,0 +1,44 @@
+Ir ejecutando los siguientes comandos al crear repositorio en https://github.com en consola o terminal:
+
+1) git init (se crear el repositorio local)
+
+2) git add . (agregar todo lo que se encuentra dentro de la carpeta"
+
+Si hay error "LF will be replaced by CRLF", ejecutar comando:
+
+git config core.autocrlf false y volver a ejecutar git add .
+
+3) git commit -m "first commit" (utilizar un commit significativo)
+
+4) git remote add origin https://github.com/sebastianrojast/proyecto_test.git (usar la ruta propia git)
+
+5) $ git push -u origin master o $ git push -u origin main dependiendo de la ruta especificada en la consola, 
+por ejemplo: Sebastian Rojas@DESKTOP-A2ISJAP MINGW64 ~/Documents/coding_dojo (master)
+
+(En este paso, se creo un html en carpeta cliente (app) y se siguen los siguientes pasos)
+
+6) git add . (para agregar todo nuevamente)
+
+7) $ git commit -m "archivo edit html" (para comentar)
+
+8) $ git push -u origin master (para subir a repositorio)
+
+9) git log (sirve para conocer los commit que tiene el proyecto) 
+
+En caso de tener problemas con el usuario o el correo:
+
+git config --global user.name "nombre"
+git config --global email.name "mail@gmail.com"
+
+Cuando se quiere conocer info del repositorio, ejecutar:
+
+git config --list
+
+Antes de ejecutar un add o push, hay que ejecutar este comando para actualizar en repositorio local para cualquier
+cambio hecho en repositorio remoto (o nube):
+
+git pull
+
+Recomendado para iniciar un comando para "saber en qué y dónde estás"
+
+git status
