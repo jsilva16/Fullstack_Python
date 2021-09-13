@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejecicio1 Mapa::</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        
+        #map {
+            height: 400px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        let map;
+
+        function initMap(lat, lng) {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: lat,
+                    lng: lng
+                },
+                zoom: 15,
+            });
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: lat,
+                    lng: lng
+                },
+                map: map,
+                title: 'Cancha El Bajo'
+
+            })
+        }
+        $(document).ready(function() {
+
+            //elemento, id(#), clase(.) 
+            //$("").accion(function() {});
+            //html o append
+            $("#clima").html("<h3>Ciudad:</h3>");
+            $("#clima").append("<input type='text' id='ciudad' placeholder='Ingrese ciudad'>");
+            $("#clima").append('<input type="button" id="buscar" value="buscar">');
+
+            $("#map").hide();
+            $("#buscar").click(function() {
+                let ciudad = $("#ciudad").val();
+                console.log(ciudad);
+                //http://api.openweathermap.org/data/2.5/weather?q=Temuco&&appid=48fa37b7148add94c4274ac6ebd15a0e
+                $.get("http://api.openweathermap.org/data/2.5/weather?q=" + ciudad + "&&appid=48fa37b7148add94c4274ac6ebd15a0e&units=metric", function(data) {
+                    console.log(data);
+                    $("#clima").after("<h3 id='temp'>Temperatura:</h3>");
+                    $("#temp").after("<h3>" + data.main.temp + "°C</h3>");
+                    
+                    initMap(data.coord.lat, data.coord.lon);
+                    $("#map").show();
+                });
+
+            });
+
+
+        //fin jquery    
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="clima"><p>lfgiugherufghskdjfgqigo</p></div>temp 13
+    <br>
+
+    <div id="map" class="container"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKt8WEa_lYBx9qMPbEGQhNJKD0x6p7o5Q&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+
+</html>

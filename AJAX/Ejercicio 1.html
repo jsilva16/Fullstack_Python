@@ -7,28 +7,61 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--import jSON con lista de ciudades para autocompletar
-        <script type="text/javascript" src="JSON/citylist.json"></script> --> 
-    <title>Api Clima</title>
+    <!-- <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqKlpyYs0VELenHeQR1_5y0VoixqaRNk&callback=initMap&libraries=&v=weekly' async></script>
+    -->
+    <title>Ejercicio Geolocalización</title>
+    
+    <style>
+        #map {
+            margin-top: 5%;
+            height: 50%;
+            width: 50%;
+            
+        }
+
+/* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
     <script>
+        
+        let map;
+        
         $(document).ready(function () {
             $('form').submit(function() {
                 var city= document.getElementById("city").value;
                 console.log(city);
-                var url= `http://api.openweathermap.org/data/2.5/weather?q=${city}&&appid=48fa37b7148add94c4274ac6ebd15a0e&units=metric`;
+                var url= `http://api.openweathermap.org/data/2.5/weather?q=${city}&&appid=48fa37b7148add94c4274ac6ebd15a0e`;
                 console.log(url);
+                
                 $.get(url, function(res) {
                     $('#city_tab').html(`<td>${res.name}</td>`);
                     $('#weather_tab').html(`<td>${res.weather[0].description}</td>`);
                     $('#temp_tab').html(`<td>${res.main.temp}</td>`);
                     $('#coord_tab').html(`<td>${res.coord.lat}, ${res.coord.lon}</td>`);
+                    console.log(res.coord.lat);
+                    console.log(res.coord.lon);
+                    //initMap(res.coord.lat, res.coord.lon)
+                    
                 }, 'json');
-            return false;
+                
             });
+
+
+            //return false;
         });
+        m-4
+        
     </script>
+    
 </head>
-<body>
+<body class="bg-light">
+    <h1 class="text-center m-3">Ejercicio Geolocalización</h1>
     <div class="container">
         <div class="">
             <h1 class="text-center mt-4">API Weather</h1>
@@ -48,21 +81,21 @@
                 <div class= "col col-sm-6 offset-sm-3 p-4">
                     <table class="table table-striped ">
                         <tbody class= "table-">
-                            <tr>
+                            <tr id="city_tab">
                                 <td>Ciudad:</td>
-                                <td id="city_tab"></td>
+                                
                             </tr>
-                            <tr>
+                            <tr id="weather_tab">
                                 <td>Tiempo:</td>
-                                <td id="weather_tab"></td>
+                                
                             </tr>
-                            <tr>
+                            <tr id="temp_tab">
                                 <td>Temperatura:</td>
-                                <td id="temp_tab"></td>
+                                
                             </tr>
-                            <tr> 
+                            <tr id="coord_tab"> 
                                 <td>Coordenadas:</td>
-                                <td id="coord_tab"></td>
+                                
                             </tr>
                         </tbody>
                     </table>
@@ -70,5 +103,16 @@
                 </div>
         </div>
     </div>
+
+    <!--  <div id="map" class="text-center col offset-sm-3">
+      
+           <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
+       --> 
+    </div>
+    </script>
+    </div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
 </body>
 </html>

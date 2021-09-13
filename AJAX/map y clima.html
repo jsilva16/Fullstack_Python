@@ -9,10 +9,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--import jSON con lista de ciudades para autocompletar
         <script type="text/javascript" src="JSON/citylist.json"></script> --> 
-    <title>Api Clima</title>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDjqKlpyYs0VELenHeQR1_5y0VoixqaRNk&callback=initMap&libraries=&v=weekly' async></script>
+    <title>Ejercicio Geolocalización</title>
+    
+    <style>
+        #map {
+            margin-top: 5%;
+            height: 40%;
+            width: 50%;
+            
+        }
+
+/* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
     <script>
+    let map;
+
+        function initMap(lat, lng) {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {
+                    lat: lat,
+                    lng: lng
+                },
+                zoom: 10,
+            });
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: lat,
+                    lng: lng
+                },
+                map: map,
+                title: 'Cancha El Bajo'
+
+            })
+        }
         $(document).ready(function () {
-            $('form').submit(function() {
+            $('#form').submit(function() {
                 var city= document.getElementById("city").value;
                 console.log(city);
                 var url= `http://api.openweathermap.org/data/2.5/weather?q=${city}&&appid=48fa37b7148add94c4274ac6ebd15a0e&units=metric`;
@@ -22,6 +60,7 @@
                     $('#weather_tab').html(`<td>${res.weather[0].description}</td>`);
                     $('#temp_tab').html(`<td>${res.main.temp}</td>`);
                     $('#coord_tab').html(`<td>${res.coord.lat}, ${res.coord.lon}</td>`);
+                    initMap(res.coord.lat, res.coord.lon);
                 }, 'json');
             return false;
             });
@@ -31,7 +70,7 @@
 <body>
     <div class="container">
         <div class="">
-            <h1 class="text-center mt-4">API Weather</h1>
+            <h1 class="text-center mt-2">API Weather</h1>
                 <br>
                 <form id="form" class="offset-col-sm-3 offset-sm-4">
                     <div class="form-group row">
@@ -69,6 +108,9 @@
                     
                 </div>
         </div>
+    </div>
+    <div id="map" class="text-center col col-sm-6 mt-1 d-inline-block offset-sm-3">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
     </div>
 </body>
 </html>
