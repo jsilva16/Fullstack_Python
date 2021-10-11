@@ -1,0 +1,26 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/bookreview
+ExecStart=/home/ubuntu/vir_env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/bookreview/djangoSistemaBase.sock djangoSistemaBase.wsgi:application
+[Install]
+WantedBy=multi-user.target
+
+server {
+  listen 80;
+  server_name 18.223.255.201 ec2-18-223-255-201.us-east-2.compute.amazonaws.com;
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location /static/ {
+      root /home/ubuntu/bookreview;
+  }
+  location / {
+      include proxy_params;
+      proxy_pass http://unix:/home/ubuntu/bookreview/djangoSistemaBase.sock;
+  }
+}
+
+
+gunicorn djangoSistemaBase.wsgi
